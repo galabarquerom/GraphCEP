@@ -1,6 +1,6 @@
 # GraphCEP
 
-To install required tools to run the artifacts follow the following steps:
+To install required tools to run the artifacts follow these steps:
 
 - Download Scala IDE for Eclipse 4.7.0 from http://scala-ide.org/ and launch it with eclipse.exe (for Windows) or eclipse.app (for Mac).
 - Install Maven plugin for Scala on Eclipse:
