@@ -1,0 +1,10 @@
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/Main.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/handler/MotorbikeEventHandler.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/subscriber/OccupantThrownAccidentSubscriber.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/event/MotorbikeEvent.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/subscriber/BlowOutTireSubscriber.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/subscriber/DriverLeftSeatSubscriber.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/subscriber/AccidentsReportSubscriber.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/subscriber/StatementSubscriber.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/util/MotorbikeEventGenerator.java
+/Users/galabarquerom/eclipse-workspace/motorbikeExample/motorbikeProject/src/main/java/com/cor/cep/subscriber/CrashSubscriber.java
