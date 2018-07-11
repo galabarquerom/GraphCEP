@@ -45,7 +45,7 @@ For running the project you will need:
 To install the project follow these steps:
 
 1. Import Project into workspace.
-2. Update maven dependencies (follow steps described above)
+2. Update maven dependencies (follow steps described above).
 3. Open ‘config.properties’ located in ‘motorbikeProject’ project to set the configuration parameters:
 	- NUM_EVENTS -> set the number of events to run a test
 	- DELAY -> set to ‘TRUE’ if you want to test with a delay of 1 second between events (results Table 1 - Row 2) and ‘FALSE’ otherwise (results Table 2 - Row 2). 
@@ -109,7 +109,7 @@ For running the project you will need:
 To install out artifact follow these steps:
 
 1. Import Project into workspace.
-2. Update maven dependencies (follow steps described above)
+2. Update maven dependencies (follow steps described above).
 3. Open ‘config.properties’ located in ‘MotorbikeGraph’ project to set the configuration parameters:
 	- NUM_EVENTS -> set the number of events to run a test
 	- DELAY -> set to ‘TRUE’ if you want to test with a delay of 1 second between events (results Table 1 - Row 3) and ‘FALSE’ otherwise (results Table 2 - Row 3). 
@@ -176,7 +176,7 @@ For running the project you will need:
 To install out artifact follow these steps:
 
 1. Import Project into workspace.
-2. Update maven dependencies (like described above)
+2. Update maven dependencies (like described above).
 3. Open ‘config.properties’ located in ‘TwitterFlickr’ project to set the configuration parameters:
 	- numInactiveTwitterUsers: number of Inactive Twitter Users.
 	- numInfluencerTwitterUsers: number of Influencer Twitter Users
@@ -238,7 +238,7 @@ For running the project you will need:
 To install out artifact follow these steps:
 
 1. Import Project into workspace.
-2. Update maven dependencies (as described above)
+2. Update maven dependencies (as described above).
 
 ## Running the tests
 
