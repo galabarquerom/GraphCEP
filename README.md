@@ -73,7 +73,7 @@ To export a jar file:
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management.
-* [Spring](https://spring.io/) - The framework used.
+* [Spring](https://spring.io/) - Architecture framework.
 
 
 # 2. Motorbike4Graphx Project
