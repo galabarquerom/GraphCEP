@@ -38,9 +38,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 For running the project you will need:
 
-- Internet connection
-- Scala IDE for Eclipse (our tests have been run with the version described above)
-- Java JDK 1.8
+- Internet connection.
+- Scala IDE for Eclipse (our tests have been run with the version described above).
+- Java JDK 1.8.
 
 ### Installing
 
@@ -49,7 +49,7 @@ To install the project follow these steps:
 1. Import Project into workspace.
 2. Update maven dependencies (follow steps described above).
 3. Open ‘config.properties’ located in ‘motorbikeProject’ project to set the configuration parameters:
-	- NUM_EVENTS -> set the number of events to run a test
+	- NUM_EVENTS -> set the number of events to run a test.
 	- DELAY -> set to ‘TRUE’ if you want to test with a delay of 1 second between events (results Table 1 - Row 2) and ‘FALSE’ otherwise (results Table 2 - Row 2). 
 Note that selecting DELAY to 'TRUE' will do that the execution takes the same amount of seconds as value of NUM_EVENTS.
 
@@ -57,9 +57,9 @@ Note that selecting DELAY to 'TRUE' will do that the execution takes the same am
 
 To run our experiments follow these steps:
 
-- In ‘config.properties’ set ‘NUM_EVENTS’ to 5000, 10000, 20000 or 30000
-- Set ‘DELAY’ to TRUE to test with a delay and set to FALSE otherwise
-- Right click on Main.java file on ‘motorbikeProject’ located on src/main/java/com/cor/cep/ project: Run as -> Java Application
+- In ‘config.properties’ set ‘NUM_EVENTS’ to 5000, 10000, 20000 or 30000.
+- Set ‘DELAY’ to TRUE to test with a delay and set to FALSE otherwise.
+- Right click on Main.java file on ‘motorbikeProject’ located on src/main/java/com/cor/cep/ project: Run as -> Java Application.
 
 Results will be shown on the console.
 
@@ -67,13 +67,13 @@ Results will be shown on the console.
 
 To export a jar file:
 
-- Right Click on ‘motorbikeProject’ project and select Export->Runnable JAR File->Next->Finish
+- Right Click on ‘motorbikeProject’ project and select Export->Runnable JAR File->Next->Finish.
 - Note that to run the jar file you have to copy ‘motorbike.csv’ and ‘config.properties’ (of ‘motorbikeProject’ project) files in the same folder as the jar.
 
 ## Built With
 
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [Spring](https://spring.io/) - The framework used
+* [Maven](https://maven.apache.org/) - Dependency Management.
+* [Spring](https://spring.io/) - The framework used.
 
 
 # 2. Motorbike4Graphx Project
@@ -97,9 +97,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 For running the project you will need:
 
-- Internet connection
-- Scala IDE for Eclipse (our tests have been run with the version described above)
-- Java JDK 1.8
+- Internet connection.
+- Scala IDE for Eclipse (our tests have been run with the version described above).
+- Java JDK 1.8.
 
 
 ### Installing
@@ -109,7 +109,7 @@ To install out artifact follow these steps:
 1. Import Project into workspace.
 2. Update maven dependencies (follow steps described above).
 3. Open ‘config.properties’ located in ‘MotorbikeGraph’ project to set the configuration parameters:
-	- NUM_EVENTS -> set the number of events to run a test
+	- NUM_EVENTS -> set the number of events to run a test.
 	- DELAY -> set to ‘TRUE’ if you want to test with a delay of 1 second between events (results Table 1 - Row 3) and ‘FALSE’ otherwise (results Table 2 - Row 3). 
 Note that selecting DELAY to 'TRUE' will do that our execution take the same amount of seconds as value of NUM_EVENTS.
 
@@ -117,9 +117,9 @@ Note that selecting DELAY to 'TRUE' will do that our execution take the same amo
 
 To run our experiments follow these steps:
 
-- In ‘config.properties’ set ‘NUM_EVENTS’ to 5000, 10000, 20000 or 30000
-- Set ‘DELAY’ to TRUE to test with a delay and set to FALSE otherwise
-- Right click on Main.java file on ‘MotorbikeGraph’ project and located on src/main/java/com/cor/graphx: Run as -> Java Application
+- In ‘config.properties’ set ‘NUM_EVENTS’ to 5000, 10000, 20000 or 30000.
+- Set ‘DELAY’ to TRUE to test with a delay and set to FALSE otherwise.
+- Right click on Main.java file on ‘MotorbikeGraph’ project and located on src/main/java/com/cor/graphx: Run as -> Java Application.
 
 Results will be shown on the console. The two last log messages of MotorbikeEventGenerator class will show the execution time of sending all simple events selected in the configuration file and the start timestamp. Note that when the last simple event has been sent all complex events haven't been processed. To calculate the exact execution time of processing complex events it is necessary to substract the start timestamp to the timestamp of the last complex event produced (first value in the tuple of the last log message in the console).
 
@@ -129,14 +129,14 @@ Note that this project will never stop the execution in Eclipse because our quer
 
 To export a jar file:
 
-- Right Click on ‘MotorbikeGraph’ project and select Export->Runnable JAR File->Next->Finish
+- Right Click on ‘MotorbikeGraph’ project and select Export->Runnable JAR File->Next->Finish.
 - Note that to run the jar file you have to copy ‘motorbike.csv’ and ‘config.properties’ (of ‘MotorbikeGraph’ project) files in the same folder as the jar.
 
 ## Built With
 
-* [Apache Spark - Graphx tool](https://spark.apache.org/docs/latest/graphx-programming-guide.html) - The technology used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [Scala](https://www.scala-lang.org/) - Coding Language
+* [Apache Spark - Graphx tool](https://spark.apache.org/docs/latest/graphx-programming-guide.html) - The technology used.
+* [Maven](https://maven.apache.org/) - Dependency Management.
+* [Scala](https://www.scala-lang.org/) - Coding Language.
 
 
 # 3. TwitterFlickrStatic Project
@@ -160,9 +160,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 For running the project you will need:
 
-- Internet connection
-- Scala IDE for Eclipse (our tests have been run with the version described above)
-- Java JDK 1.8
+- Internet connection.
+- Scala IDE for Eclipse (our tests have been run with the version described above).
+- Java JDK 1.8.
 
 
 ### Installing
@@ -173,22 +173,22 @@ To install out artifact follow these steps:
 2. Update maven dependencies (like described above).
 3. Open ‘config.properties’ located in ‘TwitterFlickr’ project to set the configuration parameters:
 	- numInactiveTwitterUsers: number of Inactive Twitter Users.
-	- numInfluencerTwitterUsers: number of Influencer Twitter Users
-	- numActiveTwitterUsers: number of Active Twitter Users
-	- numFlickrUsers: number of Flickr Users
-	- numHashtags: number of Hashtags
+	- numInfluencerTwitterUsers: number of Influencer Twitter Users.
+	- numActiveTwitterUsers: number of Active Twitter Users.
+	- numFlickrUsers: number of Flickr Users.
+	- numHashtags: number of Hashtags.
 
 ## Running the tests
 
 To run our experiments follow these steps:
 
 - In ‘config.properties’ set:
-	* numInactiveTwitterUsers: 10000, 21000 or 44000
-	* numInfluencerTwitterUsers: 5
-	* numActiveTwitterUsers: 1000, 2100 or 4400
-	* numFlickrUsers: 10000, 21000 or 44000
-	* numHashtags: 100
-- Right click on Main.java file on ‘TwitterFlickr’ project located on src: Run as -> Java Application
+	* numInactiveTwitterUsers: 10000, 21000 or 44000.
+	* numInfluencerTwitterUsers: 5.
+	* numActiveTwitterUsers: 1000, 2100 or 4400.
+	* numFlickrUsers: 10000, 21000 or 44000.
+	* numHashtags: 100.
+- Right click on Main.java file on ‘TwitterFlickr’ project located on src: Run as -> Java Application.
 
 It is necessary to wait some minutes until the graph is created. Once the graph creation is completed, 5 execution time results will be shown on the console for each query. To obtain results from Table 3 we have calculated the mean with the last 3 results for each query.
 
@@ -196,14 +196,14 @@ It is necessary to wait some minutes until the graph is created. Once the graph 
 
 To export a jar file:
 
-- Right Click on ‘TwitterFlickr’ project and select Export->Runnable JAR File->Next->Finish
+- Right Click on ‘TwitterFlickr’ project and select Export->Runnable JAR File->Next->Finish.
 - Note that to run the jar file you have to copy ‘config.properties’ (of ‘TwitterFlickr’ project) file in the same folder as the jar.
 
 ## Built With
 
-* [Apache Spark - Graphx tool](https://spark.apache.org/docs/latest/graphx-programming-guide.html) - The technology used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [Scala](https://www.scala-lang.org/) - Coding Language
+* [Apache Spark - Graphx tool](https://spark.apache.org/docs/latest/graphx-programming-guide.html) - The technology used.
+* [Maven](https://maven.apache.org/) - Dependency Management.
+* [Scala](https://www.scala-lang.org/) - Coding Language.
 
 
 # 4. TwitterFlickrStreamingDEMO Project
@@ -218,9 +218,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 For running the project you will need:
 
-- Internet connection
-- Scala IDE for Eclipse (our tests have been run with the version described above)
-- Java JDK 1.8
+- Internet connection.
+- Scala IDE for Eclipse (our tests have been run with the version described above).
+- Java JDK 1.8.
 
 
 ### Installing
@@ -232,7 +232,7 @@ To install out artifact follow these steps:
 
 ## Running the tests
 
-To run the DEMO: right click on Main.java file on ‘TwitterFlickr’ project located on src: Run as -> Java Application
+To run the DEMO: right click on Main.java file on ‘TwitterFlickr’ project located on src: Run as -> Java Application.
 
 Results will be shown on the console. Once the initial graph creation is completed, execution times of queries, node handling and edge handling will be shown.
 
@@ -240,18 +240,18 @@ Results will be shown on the console. Once the initial graph creation is complet
 
 To export a jar file:
 
-- Right Click on ‘TwitterFlickr’ project and select Export->Runnable JAR File->Next->Finish
+- Right Click on ‘TwitterFlickr’ project and select Export->Runnable JAR File->Next->Finish.
 - Note that to run the jar file you have to copy ‘config.properties’ (of ‘TwitterFlickr’ project) file in the same folder as the jar.
 
 ## Built With
 
-* [Apache Spark - Graphx tool](https://spark.apache.org/docs/latest/graphx-programming-guide.html) - The technology used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [Scala](https://www.scala-lang.org/) - Coding Language
+* [Apache Spark - Graphx tool](https://spark.apache.org/docs/latest/graphx-programming-guide.html) - The technology used.
+* [Maven](https://maven.apache.org/) - Dependency Management.
+* [Scala](https://www.scala-lang.org/) - Coding Language.
 
 # Authors
 
-Gala Barquero, Loli Burgueño, Javier Troya, Antonio Vallecillo
+Gala Barquero, Loli Burgueño, Javier Troya and Antonio Vallecillo.
 
 # References
 
