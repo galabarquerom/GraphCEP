@@ -220,8 +220,6 @@ Gala Barquero, Lola Burgueño, Javier Troya, Antonio Vallecillo
 
 Just a DEMO of TwitterFlickr example CEP with Spark technology. First of all this project creates an initial graph and then starts a simulation of how our CEP architecture works, handling new edges and nodes and running the queries in an infinite loop.
 
-Execution times of sending 
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
