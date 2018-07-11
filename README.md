@@ -86,7 +86,7 @@ With this project we have obtained results shown in Table 1 - "Spark" row and Ta
 
 For this artifact we have two projects:
 
-- motorbike4Graphx: the scala project with the source code.
+- motorbike4Graphx: scala project with the source code.
 - MotorbikeGraph: java project to export a jar file of the project.
 
 ## Getting Started
@@ -149,8 +149,8 @@ With this project we have obtained results shown in Table 3 of our paper.
 
 For this artifact we have two projects:
 
-- TwitterFlickr: the scala project with the source code.
-- TwitterFlickrStatic: java project to export a jar file of the project.
+- TwitterFlickrStatic: scala project with the source code.
+- TwitterFlickr: java project to export a jar file of the project.
 
 ## Getting Started
 
@@ -209,6 +209,11 @@ To export a jar file:
 # 4. TwitterFlickrStreamingDEMO Project
 
 Just a DEMO of TwitterFlickr example CEP with Spark technology. First of all this project creates an initial graph and then starts a simulation of how our CEP architecture works, handling new edges and nodes and running the queries in an infinite loop.
+
+For this artifact we have two projects:
+
+- TwitterFlickr4Graphx: scala project with the source code.
+- TwitterFlickr: java project to export a jar file of the project.
 
 ## Getting Started
 
