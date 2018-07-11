@@ -1,0 +1,253 @@
+package com.cor.graphx.util
+
+import com.cor.graphx.handler.FlickrTwitterEventHandler
+
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import com.cor.graphx.event.Tweet
+import com.cor.graphx.event.TwitterUser
+import org.apache.spark.graphx.Edge
+
+import org.apache.spark.graphx.VertexId
+import scala.collection.mutable.ListBuffer
+import com.cor.graphx.event.Hashtag
+import com.cor.graphx.event.FlickrUser
+import com.cor.graphx.event.Photo
+
+object EventGenerator extends App {
+
+  /**
+   * Creates events and lets the implementation class handle them.
+   */
+  def startSendingEvents(eventHandler: FlickrTwitterEventHandler): Unit = {
+
+    val numInactiveTwitterUsers = 100
+    val numInfluencerTwitterUsers = 0
+    val numActiveTwitterUsers = 10
+    val numFlickrUsers = 1000
+    val numHashtags = 10
+
+    // Edges
+    val avgNumFollowersPerUser = 1 //60 //40
+    val avgNumFollowersPerInfluencer = 40000
+    val avgNumFollowersPerFlickrUser = 50 //40
+    val avgNumPhotoPerUser = 1//10
+    val avgNumTweetPerUser = 10 //4
+    val avgNumTweetPerInfluencer = 100
+    val avgNumHashtagsPerTweet = 2
+    val avgNumLikesPerTweet = 20
+    val avgNumMentionsInTweet = 1
+    val avgNumFavoritesPerPhoto = 50
+    val avgNumCommentsPerPhoto = 2
+    val logger: Logger = LoggerFactory.getLogger(getClass)
+
+    logger.info(getStartingMessage())
+
+    var count = 0
+    var p = 0
+    
+    
+    
+    
+    
+
+    var hashtags = new ListBuffer[Hashtag]()
+    for (p <- 1 to numHashtags) {
+      val ht = new Hashtag(count, System.currentTimeMillis(), "hashtag" + p)
+      eventHandler.handleVertex(ht)
+      hashtags += ht
+      count += 1
+    }
+
+    while (true) {
+
+      var inactiveTwitterUsers = new ListBuffer[TwitterUser]()
+      var influencerTwitterUsers = new ListBuffer[TwitterUser]()
+      var activeTwitterUsers = new ListBuffer[TwitterUser]()
+      var flickrUsers = new ListBuffer[FlickrUser]()
+      var photos = new ListBuffer[Photo]()
+      var tweets = new ListBuffer[Tweet]()
+
+      val rand = scala.util.Random
+
+      for (i <- 1 to numInactiveTwitterUsers) {
+        val user = new TwitterUser(count, System.currentTimeMillis(), "twitterUser" + count, "twitterUser" + count, "malaga", "false", "", "", "user" + count + "description", System.currentTimeMillis())
+        eventHandler.handleVertex(user)
+        inactiveTwitterUsers += user
+        count += 1
+
+      }
+
+      var x = 0
+      for (x <- 1 to numActiveTwitterUsers) {
+        val user = new TwitterUser(count, System.currentTimeMillis(), "twitterUser" + count, "twitterUser" + count, "malaga", "false", "", "", "user" + count + "description", System.currentTimeMillis())
+        eventHandler.handleVertex(user)
+        activeTwitterUsers += user
+        count += 1
+      }
+
+      var y = 0
+      for (y <- 1 to numInfluencerTwitterUsers) {
+        val user = new TwitterUser(count, System.currentTimeMillis(), "twitterUser" + count, "twitterUser" + count, "malaga", "false", "", "", "user" + count + "description", System.currentTimeMillis())
+        eventHandler.handleVertex(user)
+        influencerTwitterUsers += user
+        count += 1
+      }
+
+      val allUsers = inactiveTwitterUsers ++ activeTwitterUsers
+      for (tu <- allUsers) {
+        val numFollowers = rand.nextInt(avgNumFollowersPerUser * 2)
+        var it = 0
+        for (it <- 1 to numFollowers) {
+          val n = rand.nextInt(allUsers.size) //get random user
+          val tu1 = allUsers(n)
+          val edge = Edge(tu1.idNode.asInstanceOf[VertexId], tu.idNode.asInstanceOf[VertexId], (ListBuffer("follows"), 0L)) //tu1 follows tu
+          eventHandler.handleEdge(edge)
+        }
+      }
+
+      val allUsersWithInfluencer = allUsers ++ influencerTwitterUsers
+      for (tu <- influencerTwitterUsers) {
+        val numFollowers = rand.nextInt(avgNumFollowersPerInfluencer * 2)
+        var it = 0
+        for (it <- 1 to numFollowers) {
+          val n = rand.nextInt(allUsersWithInfluencer.size) //get random user
+          val tu1 = allUsersWithInfluencer(n)
+          val edge = Edge(tu1.idNode.asInstanceOf[VertexId], tu.idNode.asInstanceOf[VertexId], (ListBuffer("follows"), 0L)) //tu1 follows tu
+          eventHandler.handleEdge(edge)
+        }
+      }
+
+      for (tu <- activeTwitterUsers) {
+        val numTweets = rand.nextInt(avgNumTweetPerUser * 2)
+        val it = 0
+        for (it <- 1 to numTweets) {
+          val t = new Tweet(count, System.currentTimeMillis(), "tweet-" + tu.id + "-" + it, "tweet text", System.currentTimeMillis(), "web")
+          eventHandler.handleVertex(t)
+          println("Tweeeeeet")
+          tweets += t
+          val edge = Edge(tu.idNode.asInstanceOf[VertexId], t.idNode.asInstanceOf[VertexId], (ListBuffer("publishes"), 0L))
+          eventHandler.handleEdge(edge)
+          count += 1
+        }
+      }
+
+      for (tu <- influencerTwitterUsers) {
+        val rand = scala.util.Random
+        val numTweets = rand.nextInt(avgNumTweetPerInfluencer * 2)
+        val it = 0
+        for (it <- 1 to numTweets) {
+          val t = new Tweet(count, System.currentTimeMillis(), "tweet-" + tu.id + "-" + it, "tweet text", System.currentTimeMillis(), "web")
+          eventHandler.handleVertex(t)
+          tweets += t
+          val edge = Edge(tu.idNode.asInstanceOf[VertexId], t.idNode.asInstanceOf[VertexId], (ListBuffer("publishes"), 0L))
+          eventHandler.handleEdge(edge)
+          count += 1
+        }
+      }
+
+      for (tweet <- tweets) {
+        val numHashtagsThisTweet = rand.nextInt(avgNumHashtagsPerTweet * 2)
+        val i = 0
+        for (i <- 1 to numHashtagsThisTweet) {
+          val htn = rand.nextInt(hashtags.size)
+          val ht = hashtags(htn)
+          val edge = Edge(tweet.idNode.asInstanceOf[VertexId], ht.idNode.asInstanceOf[VertexId], (ListBuffer("contains"), 0L))
+          eventHandler.handleEdge(edge)
+        }
+      }
+
+      for (tweet <- tweets) {
+        val numLikesThisTweet = rand.nextInt(avgNumLikesPerTweet * 2)
+        val it = 0
+        for (it <- 1 to numLikesThisTweet) {
+          val index = rand.nextInt(allUsers.size)
+          val tu = allUsers(index)
+          val like = Edge(tu.idNode.asInstanceOf[VertexId], tweet.idNode.asInstanceOf[VertexId], (ListBuffer("likes"), System.currentTimeMillis()))
+          eventHandler.handleEdge(like)
+        }
+      }
+      var u = 0
+      for (u <- 1 to numFlickrUsers) {
+        val fu = new FlickrUser(count, System.currentTimeMillis(), "flickr user " + count, "flickr user " + count, "malaga")
+        eventHandler.handleVertex(fu)
+        flickrUsers += fu
+        count += 1
+      }
+      println("users flickr")
+
+      for (fu <- flickrUsers) {
+        val numFollowers = rand.nextInt(avgNumFollowersPerFlickrUser * 2)
+        val it = 0
+        for (it <- 1 to numFollowers) {
+          val n = rand.nextInt(flickrUsers.size) //get random user
+          val fu1 = flickrUsers(n)
+          val edge = Edge(fu1.idNode.asInstanceOf[VertexId], fu.idNode.asInstanceOf[VertexId], (ListBuffer("follows"), 0L)) //tu1 follows tu
+          eventHandler.handleEdge(edge)
+        }
+      }
+
+      println("followers flickr")
+      for (fu <- flickrUsers) {
+        val numPhotos = rand.nextInt(avgNumPhotoPerUser * 2);
+        val it = 0
+        for (it <- 1 to numPhotos) {
+          val p = new Photo(count, System.currentTimeMillis(), "photo title", "photo-" + fu.id + "-" + count, "photo description", System.currentTimeMillis(), System.currentTimeMillis(), "cannon");
+          eventHandler.handleVertex(p)
+          photos += p;
+          val edge = Edge(fu.idNode.asInstanceOf[VertexId], p.idNode.asInstanceOf[VertexId], (ListBuffer("owns"), 0L))
+          eventHandler.handleEdge(edge)
+          count += 1
+        }
+      }
+
+      println("photos flickr")
+
+      for (photo <- photos) {
+        val numHashtagsThisPhoto = rand.nextInt(avgNumHashtagsPerTweet * 2)
+        val it = 0
+        for (it <- 1 to numHashtagsThisPhoto) {
+          val htn = rand.nextInt(hashtags.size)
+          val ht = hashtags(htn);
+          val edge = Edge(photo.idNode.asInstanceOf[VertexId], ht.idNode.asInstanceOf[VertexId], (ListBuffer("tags"), 0L))
+          eventHandler.handleEdge(edge)
+        }
+      }
+      println("hashtags flickr")
+      for (photo <- photos) {
+        val numLikesThisPhoto = rand.nextInt(avgNumFavoritesPerPhoto * 2)
+        val it = 0
+        for (it <- 1 to numLikesThisPhoto) {
+          val index = rand.nextInt(flickrUsers.size)
+          val fu = flickrUsers(index)
+          val fav = Edge(fu.idNode.asInstanceOf[VertexId], photo.idNode.asInstanceOf[VertexId], (ListBuffer("favorites"), System.currentTimeMillis()))
+          eventHandler.handleEdge(fav)
+        }
+      }
+      println("fav flickr")
+      for (photo <- photos) {
+        val numCommentsThisPhoto = rand.nextInt(avgNumCommentsPerPhoto * 2)
+        val it = 0
+        for (it <- 1 to numCommentsThisPhoto) {
+          val index = rand.nextInt(flickrUsers.size)
+          val fu = flickrUsers(index)
+          val c = Edge(fu.idNode.asInstanceOf[VertexId], photo.idNode.asInstanceOf[VertexId], (ListBuffer("comments", "comment text"), System.currentTimeMillis()))
+          eventHandler.handleEdge(c)
+        }
+      }
+      println("comments flickr")
+
+    }
+
+  }
+
+  def getStartingMessage(): String = {
+    val sb = new StringBuilder();
+    sb.append("\n\n************************************************************");
+    sb.append("\n* STARTING - ");
+    sb.append("\n* PLEASE WAIT -");
+    sb.append("\n* A WHILE TO SEE WARNING AND CRITICAL EVENTS!");
+    sb.append("\n************************************************************\n");
+    return sb.toString();
+  }
+}

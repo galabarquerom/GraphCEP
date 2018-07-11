@@ -1,0 +1,34 @@
+package com.cor.graphx
+
+import org.apache.log4j.Level
+import org.apache.log4j.Logger
+import com.cor.graphx.handler.FlickrTwitterEventHandler
+import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext
+import com.cor.graphx.util.EventGenerator
+
+object main {
+  def main(args: Array[String]) {
+    Logger.getLogger("org").setLevel(Level.OFF)
+
+    val conf = new SparkConf().setAppName("Graph").setMaster("local").set("spark.driver.memory", "2g")
+
+    val sc = new SparkContext(conf)
+    val eventHandler = new FlickrTwitterEventHandler(sc)
+
+    val threadUpdate = new Thread {
+      override def run {
+        EventGenerator.startSendingEvents(eventHandler)
+      }
+    }
+    
+    val threadDelete = new Thread {
+      override def run {
+        eventHandler.deleteVertex     
+      }
+    }
+    
+    threadUpdate.start
+    //threadDelete.start
+  }
+}
