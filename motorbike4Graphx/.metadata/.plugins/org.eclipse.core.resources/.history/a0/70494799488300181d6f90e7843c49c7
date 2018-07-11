@@ -1,0 +1,5 @@
+package com.cor.graphx.subscriber
+
+class OccupantThrownAccidentSubscriber {
+  
+}
