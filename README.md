@@ -264,6 +264,6 @@ To export a jar file:
 
 ## Authors
 
-Gala Barquero, Lola Burgueño, Javier Troya, Antonio Vallecillo
+Gala Barquero, Loli Burgueño, Javier Troya, Antonio Vallecillo
 
 
