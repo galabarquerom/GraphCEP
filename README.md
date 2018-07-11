@@ -51,7 +51,7 @@ To install the project follow these steps:
 3. Open ‘config.properties’ located in ‘motorbikeProject’ project to set the configuration parameters:
 	- NUM_EVENTS -> set the number of events to run a test.
 	- DELAY -> set to ‘TRUE’ if you want to test with a delay of 1 second between events (results Table 1 - Row 2) and ‘FALSE’ otherwise (results Table 2 - Row 2). 
-Note that selecting DELAY to 'TRUE' will do that the execution takes the same amount of seconds as value of NUM_EVENTS.
+Note that selecting DELAY to 'TRUE' will make the execution to take the same amount of seconds as value of NUM_EVENTS.
 
 ## Running the tests
 
@@ -111,7 +111,7 @@ To install out artifact follow these steps:
 3. Open ‘config.properties’ located in ‘MotorbikeGraph’ project to set the configuration parameters:
 	- NUM_EVENTS -> set the number of events to run a test.
 	- DELAY -> set to ‘TRUE’ if you want to test with a delay of 1 second between events (results Table 1 - Row 3) and ‘FALSE’ otherwise (results Table 2 - Row 3). 
-Note that selecting DELAY to 'TRUE' will do that our execution take the same amount of seconds as value of NUM_EVENTS.
+Note that selecting DELAY to 'TRUE' will make our execution to take the same amount of seconds as value of NUM_EVENTS.
 
 ## Running the tests
 
