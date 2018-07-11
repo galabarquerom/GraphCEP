@@ -13,10 +13,10 @@ To install required tools to run the artifacts follow these steps:
 	* Restart Eclipse.
 
 Note that our artifacts use Maven to build dependencies on them. Sometimes, when importing a Maven project, dependencies can be downloaded wrongly and to solve this problem it is necessary to follow these steps:
-	- Right click on the Maven project.
-	- Select Run as-> Maven clean.
-	- Select Run as-> Maven install.
-	- Update the project right clicking on Maven project and selecting Maven->Update project.
+- Right click on the Maven project.
+- Select Run as-> Maven clean.
+- Select Run as-> Maven install.
+- Update the project right clicking on Maven project and selecting Maven->Update project.
 
 Some of our artifacts have two projects: a Scala project and a Java project. The first one contains the source code and the second one is an auxiliary project that allows to export a jar file.
 
