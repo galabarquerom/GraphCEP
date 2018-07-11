@@ -18,7 +18,7 @@ Note that our artifacts use Maven to build dependencies on them. Sometimes, when
 	- Select Run as-> Maven install.
 	- Update the project right clicking on Maven project and selecting Maven->Update project.
 
-Some of our artifacts have two projects: a Scala project and a Java project. The first one contains the source code and the second one is an auxiliary project that permits to export a jar file.
+Some of our artifacts have two projects: a Scala project and a Java project. The first one contains the source code and the second one is an auxiliary project that allows to export a jar file.
 
 # 1. Motorbike4Esper Project
 
