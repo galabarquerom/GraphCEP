@@ -1,6 +1,6 @@
 # GraphCEP
 
-To install required tools to run the artifacts follow these steps:
+To install required tools to run the artifacts of our paper [1] follow these steps:
 
 - Download Scala IDE for Eclipse 4.7.0 from http://scala-ide.org/ and launch it with eclipse.exe (for Windows) or eclipse.app (for Mac).
 - Install Maven plugin for Scala on Eclipse:
@@ -251,4 +251,7 @@ To export a jar file:
 
 Gala Barquero, Loli Burgueño, Javier Troya, Antonio Vallecillo
 
+# References
+
+[1] Gala Barquero, Loli Burgueño, Javier Troya, Antonio Vallecillo: Extending Complex Event Processing to Graph-structured Information. In Proc. of the ACM/IEEE 21th International Conference on Model Driven Engineering Languages and Systems 2018 (MODELS 2018). Copenhagen, Denmark, October 2015. 
 
