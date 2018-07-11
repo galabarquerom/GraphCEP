@@ -73,10 +73,6 @@ To export a jar file:
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Spring](https://spring.io/) - The framework used
 
-## Authors
-
-Gala Barquero, Lola Burgueño, Javier Troya, Antonio Vallecillo
-
 
 # 2. Motorbike4Graphx Project
 
@@ -139,10 +135,6 @@ To export a jar file:
 * [Apache Spark - Graphx tool](https://spark.apache.org/docs/latest/graphx-programming-guide.html) - The technology used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Scala](https://www.scala-lang.org/) - Coding Language
-
-## Authors
-
-Gala Barquero, Lola Burgueño, Javier Troya, Antonio Vallecillo
 
 
 # 3. TwitterFlickrStatic Project
@@ -211,10 +203,6 @@ To export a jar file:
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Scala](https://www.scala-lang.org/) - Coding Language
 
-## Authors
-
-Gala Barquero, Lola Burgueño, Javier Troya, Antonio Vallecillo
-
 
 # 4. TwitterFlickrStreamingDEMO Project
 
@@ -259,7 +247,7 @@ To export a jar file:
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Scala](https://www.scala-lang.org/) - Coding Language
 
-## Authors
+# Authors
 
 Gala Barquero, Loli Burgueño, Javier Troya, Antonio Vallecillo
 
