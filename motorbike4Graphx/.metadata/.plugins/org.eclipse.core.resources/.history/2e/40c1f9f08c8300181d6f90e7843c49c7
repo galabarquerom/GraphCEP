@@ -1,7 +1,0 @@
-#Config file
-
-#Number of events to test
-NUM_EVENTS=10
-
-#Test with delay of 1 second
-DELAY=TRUE
