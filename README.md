@@ -40,7 +40,6 @@ For running the project you will need:
 - Scala IDE for Eclipse (our tests have been run with the version described above)
 - Java JDK 1.8
 
-Note: 
 ### Installing
 
 To install the project follow these steps:
