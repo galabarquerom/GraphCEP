@@ -12,6 +12,8 @@ To install required tools to run the artifacts of our paper [1] follow these ste
 	* Select 'Maven Integration for Eclipse' checkbox and click on Next button every time it appears until the installation finishes. If 'The installation cannot be completed as requested' message appears select 'Show original error and build my own solution' on the radiobutton and choose 'Install different version than originally requested' and 'Update items already installed'.
 	* Restart Eclipse.
 
+## Maven Dependencies 
+
 Note that our artifacts use Maven to build dependencies on them. Sometimes, when importing a Maven project, dependencies can be downloaded wrongly and to solve this problem it is necessary to follow these steps:
 - Right click on the Maven project.
 - Select Run as-> Maven clean.
