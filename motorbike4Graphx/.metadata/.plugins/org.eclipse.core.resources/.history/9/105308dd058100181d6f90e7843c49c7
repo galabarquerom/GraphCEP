@@ -1,0 +1,102 @@
+package com.cor.graphx
+
+import org.apache.log4j.Level
+import org.apache.log4j.Logger
+
+import com.cor.graphx.util.MotorbikeEventGenerator
+import com.cor.graphx.event.MotorbikeEvent
+import com.cor.graphx.event.CrashEvent
+import com.cor.graphx.event.DriverLeftSeatEvent
+import com.cor.graphx.event.BlowOutTireEvent
+import scala.collection.mutable.ListBuffer
+import com.cor.graphx.event.OccupantThrownAccidentEvent
+import com.cor.graphx.util.VertexProperty
+import org.apache.spark.graphx.Graph
+import org.apache.spark.rdd.RDD
+import org.apache.spark.graphx.Edge
+import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext
+import com.cor.graphx.handler.MotorbikeEventHandler
+import java.util.TimerTask
+import java.util.Timer
+import java.util.Scanner
+
+
+object main {
+
+  def main(args: Array[String]) {
+     Logger.getLogger("org").setLevel(Level.OFF)
+     
+    val input = new Scanner(System.in).asScala
+    input.head // first element
+    val asList = input.toList // scala list
+     
+     
+     var param = 0L
+     if(!args.isEmpty){
+       try{
+         param = args(0).toLong
+       }catch{
+         case e : NumberFormatException 
+         => {
+           param = 30000
+         }
+       }
+     }else{
+       param = 30000
+     }
+       
+    val conf = new SparkConf().setAppName("Graph").setMaster("local").set("spark.driver.memory", "2g")
+
+    val sc = new SparkContext(conf)
+    val motorbikeEventHandler = new MotorbikeEventHandler(sc)
+   
+    
+
+    val threadCrash = new Thread {
+      override def run {
+        while (true) {
+          motorbikeEventHandler.crash
+        }
+      }
+    }
+
+    val threadDriverLeftSeat = new Thread {
+      override def run {
+        while (true) {
+          motorbikeEventHandler.driverLeftSeat
+          
+        }
+      }
+    }
+
+    val threadBlowOutTire = new Thread {
+      override def run {
+        while (true) {
+          motorbikeEventHandler.blowOutTire
+        }
+      }
+    }
+
+    val threadOccupantThrownAccident = new Thread {
+      override def run {
+        while (true) {
+          motorbikeEventHandler.occupantThrownAccident
+        }
+      }
+    }
+
+    threadCrash.start
+    threadBlowOutTire.start
+    threadDriverLeftSeat.start
+    threadOccupantThrownAccident.start
+
+    
+   MotorbikeEventGenerator.startSendingMotorbikesReadings(motorbikeEventHandler, param)
+   
+
+  }
+  
+   
+ 
+}

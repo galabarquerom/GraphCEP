@@ -1,0 +1,8 @@
+package com.cor.graphx.util
+
+  /**
+   * Common class to create vertex in a graph
+ 	 */
+class VertexProperty (val currentTimeStamp: Long) extends Serializable{
+  
+}

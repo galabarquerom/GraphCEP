@@ -1,0 +1,115 @@
+package com.cor.graphx
+
+import org.apache.log4j.Level
+import org.apache.log4j.Logger
+
+import com.cor.graphx.util.MotorbikeEventGenerator
+import com.cor.graphx.event.MotorbikeEvent
+import com.cor.graphx.event.CrashEvent
+import com.cor.graphx.event.DriverLeftSeatEvent
+import com.cor.graphx.event.BlowOutTireEvent
+import scala.collection.mutable.ListBuffer
+import com.cor.graphx.event.OccupantThrownAccidentEvent
+import com.cor.graphx.util.VertexProperty
+import org.apache.spark.graphx.Graph
+import org.apache.spark.rdd.RDD
+import org.apache.spark.graphx.Edge
+import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext
+import com.cor.graphx.handler.MotorbikeEventHandler
+import java.util.TimerTask
+import java.util.Timer
+import java.util.Scanner
+
+object main {
+
+  def main(args: Array[String]) {
+    Logger.getLogger("org").setLevel(Level.OFF)
+    
+    //Spark configuration
+    val conf = new SparkConf().setAppName("Graph").setMaster("local").set("spark.driver.memory", "2g")
+    val sc = new SparkContext(conf)
+    
+    //Create instance for MotorbikeEventHandler
+    val motorbikeEventHandler = new MotorbikeEventHandler(sc)
+    motorbikeEventHandler.initService
+    val scanner = new Scanner(System.in)  
+    
+    //Run queries in parallel
+
+    val threadCrash = new Thread {
+      override def run {
+        while (true) {
+          motorbikeEventHandler.crash
+        }
+      }
+    }
+
+    val threadBlowOutTire = new Thread {
+      override def run {
+        while (true) {
+          motorbikeEventHandler.blowOutTire
+        }
+      }
+    }
+
+    val threadOccupantThrownAccident = new Thread {
+      override def run {
+        while (true) {
+          motorbikeEventHandler.occupantThrownAccident
+        }
+      }
+    }
+
+    threadCrash.start
+    threadBlowOutTire.start
+    threadOccupantThrownAccident.start
+    
+    // Selecting number of events
+
+    System.out.print("Select the number of events (max 30000):")
+    val nEvents = scanner.nextLine()
+
+    var param = 0L
+
+    if (!nEvents.isEmpty() && nEvents.matches("[-+]?\\d*\\.?\\d+")) {
+      try {
+        param = nEvents.toLong
+        if (param > 30000L) {
+          System.out.println("Error. Test without 30000 events")
+          param = 30000L
+        }
+      } catch {
+        case e: NumberFormatException => {
+          param = 30000
+        }
+      }
+    } else {
+      System.out.println("Error. Test without 30000 events")
+      param = 30000L
+    }
+
+    // Selecting delay
+
+    System.out.print("Do you want to test with a delay of 1 second between events? (S/N)")
+    val option = scanner.nextLine()
+
+    if (!option.isEmpty() && option.matches("[SNsn]")) {
+
+      if (option.equalsIgnoreCase("S")) {
+        // Start Demo with delay
+        MotorbikeEventGenerator.startSendingMotorbikesReadingsDelay(motorbikeEventHandler, param)
+      } else {
+        // Start Demo without delay
+        MotorbikeEventGenerator.startSendingMotorbikesReadings(motorbikeEventHandler, param)
+      }
+
+    } else {
+      // Start Demo without delay
+      System.out.println("Error. Test without delay")
+      MotorbikeEventGenerator.startSendingMotorbikesReadings(motorbikeEventHandler, param)
+    }
+
+  }
+
+}
