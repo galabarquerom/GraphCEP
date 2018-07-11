@@ -1,0 +1,6 @@
+2018-07-10 18:47:40,022 ERROR [ModalContext] - System.err - log4j:WARN No appenders could be found for logger (org.eclipse.m2e.core.internal.project.registry.ProjectRegistryRefreshJob).
+2018-07-10 18:47:40,024 ERROR [ModalContext] - System.err - log4j:WARN Please initialize the log4j system properly.
+2018-07-10 18:47:40,137  WARN [ModalContext] - ScalaProject - Project TwitterUserStatic has platform default sourceLevel.
+2018-07-10 18:47:40,138  WARN [ModalContext] - ScalaProject - Project TwitterUserStatic runs on platform default installation.
+2018-07-10 18:47:40,507  WARN [ModalContext] - ScalaProject - Project TwitterUserStatic has platform default sourceLevel.
+2018-07-10 18:47:40,507  WARN [ModalContext] - ScalaProject - Project TwitterUserStatic runs on platform default installation.
